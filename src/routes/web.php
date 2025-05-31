@@ -11,7 +11,7 @@ use App\Http\Controllers\HelloController; # HelloControllerをインポート②
 # HTTPメソッド: GET, POST, PUT, PATCH, DELETE など
 # indexアクションは、コントローラの中で定義されているメソッド名
 # indexという名前は、初期表示ページ（TOP,一覧ページ）などの内容を意味することが多い
-Route::get('/', [TestController::class, 'index']); # ①
+Route::get('/test', [TestController::class, 'index']); # ①
 Route::get('/hello', [HelloController::class, 'index']); # ②
 
 
