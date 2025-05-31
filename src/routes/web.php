@@ -1,8 +1,12 @@
 <?php
+// web.php：一般的なWebページとしてアクセスするためのルーティングファイル
+
+# 外部ファイルからクラスやメソッド(関数)を引用する
+# Illuminateは、vendor/laravel/framework/srcディレクトリ以下にある
+use Illuminate\Support\Facades\Route;
 
 # Controllerはphpコンテナでmakeしたものをインポートする
 # use App\Http\Controllers\コントローラファイル名;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController; # TestControllerをインポート①
 use App\Http\Controllers\HelloController; # HelloControllerをインポート②
 
@@ -11,10 +15,19 @@ use App\Http\Controllers\HelloController; # HelloControllerをインポート②
 # HTTPメソッド: GET, POST, PUT, PATCH, DELETE など
 # indexアクションは、コントローラの中で定義されているメソッド名
 # indexという名前は、初期表示ページ（TOP,一覧ページ）などの内容を意味することが多い
-Route::get('/test', [TestController::class, 'index']); # ①
+// Route::get('/test', [TestController::class, 'index']); # ①
 Route::get('/hello', [HelloController::class, 'index']); # ②
 
 
+# アドレス部分に{パラメータ名}を指定することで、パラメータを受け付けるルーティングを設定
+# 例えば　http://localhost/test/hello にアクセスすると、helloの部分がパラメータとして取り出され表示されます。＝必須パラメータ
+// Route::get('/test/{text}', [TestController::class, 'index']);
+
+# 「？」をつけることで、パラメータが省略可能になります＝任意パラメータ
+// Route::get('/test/{text?}', [TestController::class, 'index']);
+
+# クエリパラメータが任意であるため、特別な設定は必要ありません。
+Route::get('/test', [TestController::class, 'index']);
 
 /*
 |--------------------------------------------------------------------------
