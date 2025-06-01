@@ -5,10 +5,17 @@
 # Illuminateは、vendor/laravel/framework/srcディレクトリ以下にある
 use Illuminate\Support\Facades\Route;
 
-# Controllerはphpコンテナでmakeしたものをインポートする
+
+# <Controllerはphpコンテナでmakeしたものをインポートする>
 # use App\Http\Controllers\コントローラファイル名;
-use App\Http\Controllers\TestController; # TestControllerをインポート①
-use App\Http\Controllers\HelloController; # HelloControllerをインポート②
+use App\Http\Controllers\TestController;
+use App\Http\Controllers\HelloController;
+
+
+# ブラウザに画面表示をしよう:view編
+Route::get('/', [TestController::class, 'index']);
+
+
 
 
 # Route::HTTPメソッド('URLのルートパス', [コントローラ名, 'アクション名'])
@@ -27,7 +34,7 @@ Route::get('/hello', [HelloController::class, 'index']); # ②
 // Route::get('/test/{text?}', [TestController::class, 'index']);
 
 # クエリパラメータが任意であるため、特別な設定は必要ありません。
-Route::get('/test', [TestController::class, 'index']);
+// Route::get('/test', [TestController::class, 'index']);
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +46,9 @@ Route::get('/test', [TestController::class, 'index']);
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+
 
 # http://localhost/ にアクセスするとLaravelのウェルカムページにアクセスすることができる設定
 # 「/」（つまり、http://localhost/）にアクセスしたときに、resources/views/welcome.blade.php が表示されるように設定されている
