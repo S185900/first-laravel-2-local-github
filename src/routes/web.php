@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\HelloController;
 
+// 3-2
+use App\Http\Controllers\MiddlewareController;
+
+// 3-2
+Route::get('/middleware', [MiddlewareController::class, 'index']);
+// Route::post('/middleware', [MiddlewareController::class, 'post'])->middleware('first');
+Route::post('/middleware', [MiddlewareController::class, 'post']);
 
 # ブラウザに画面表示をしよう:view編
 Route::get('/', [TestController::class, 'index']);
